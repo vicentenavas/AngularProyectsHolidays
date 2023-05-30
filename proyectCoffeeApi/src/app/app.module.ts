@@ -10,6 +10,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { NsfwComponent } from './nsfw/nsfw.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +23,14 @@ import { NsfwComponent } from './nsfw/nsfw.component';
     ForgotComponent,
     NsfwComponent,
 
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     
   ],
   providers: [ApiService],

@@ -8,16 +8,14 @@ export class ApiService {
   constructor(private http: HttpClient){}
   private baseUrl = 'https://api.waifu.im/search/';
 
-  getData(type: string){
-    return this.http.get('https://api.waifu.im/search/?included_tags=raiden-shogun' + type)
-  }
+
 
   getDataHome(){
-    return this.http.get('https://api.waifu.im/search/?included_tags=raiden-shogun')
+    return this.http.get('https://api.waifu.im/search/')
   }
 
 
-  getDataNsfwbyTag(tag: String){ 
+  getDatabyTag(tag: String){ 
     const url = this.baseUrl + tag; // Construye la URL agregando el tag al final
     return this.http.get(url);
 
@@ -25,6 +23,3 @@ export class ApiService {
 
  
 }
-
-
-

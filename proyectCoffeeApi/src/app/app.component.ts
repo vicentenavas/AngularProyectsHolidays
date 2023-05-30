@@ -19,4 +19,14 @@ export class AppComponent {
   setGrayBackground() {
     this.isWhiteBackground = false;
   }
+
+// Función para controlar el menú desplegable
+// Función para controlar el menú desplegable
+// Función para controlar el menú desplegable
+
+
+
+
+
+ 
 }

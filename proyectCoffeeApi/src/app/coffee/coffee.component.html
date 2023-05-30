@@ -1,24 +1,70 @@
-<body class="flex   w-full  space-x-32">
-  <div >
-    <img [src]="data?.images[0].url" alt="Imagen" class="h-256 w-full border rounded-lg ">
-    </div>
+<body class="flex bg-whitew-full text-red-200 space-x-32 pl-32 pr-32 " >
+  <div>
+    <img [src]="response.images[0].url" alt="Imagen" width="200" class="h-full w-full border rounded-lg">
+  </div>
+ 
 
-    <div class="justify-center pt-24 ">
-      <h1 class="text-5xl pb-4">Artista: {{ data?.images[0].artist['name'] }}</h1>
-      <p class="text-4xl pb-4">ID de imagen: {{ data.images[0].image_id }}</p>
-      <button class="bg-red-200 rounded-lg px-4 py-2 text-gray-800">
-        <a href="{{ data.images[0].preview_url }}">Ver obra original</a>
+  <div class="justify-center pt-24">
+  
+      <button id="dropdownNavbar1Link" data-dropdown-toggle="dropdownNavbar1"
+        class="flex text-xl items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100  md:border-0  md:p-0 md:w-auto dark:text-black md:dark:hover:text-black dark:focus:text-black dark:border-gray-700 md:dark:hover:bg-transparent">
+        Select
+        <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
       </button>
-      <ul class="flex flex space-x-2 pt-8">
-        <li *ngFor="let tag of data.images[0].tags" class="text-white border rounded-lg bg-black py-2 px-4">
-          {{ tag.name }}
+      <!-- Dropdown menu -->
+      <div id="dropdownNavbar1"
+      class="hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+        <li>
+          <a (click)="getData('?included_tags=maid'); selectedTag = '?included_tags=maid'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">Maid</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=waifu'); selectedTag = '?included_tags=waifu'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">Waifu</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=marin-kitagawa'); selectedTag = '?included_tags=marin-kitagawa'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">marin-kitagawa</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=mori-calliope'); selectedTag = '?included_tags=mori-calliope'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">mori-calliope</a>
+        </li>
+        <li><a (click)="getData('?included_tags=raiden-shogun'); selectedTag = '?included_tags=raiden-shogun'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">raiden-shogun</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=oppai'); selectedTag ='?included_tags=oppai'" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">oppai</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=selfies'); selectedTag = ('?included_tags=selfies')" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">selfie</a>
+        </li>
+        <li>
+          <a (click)="getData('?included_tags=mori-calliope'); selectedTag = ('?included_tags=mori-calliope')" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">Mori Collaiope</a>
+        </li>
+        <li>
+          <a (click)="getData(''); selectedTag = ('')" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">random</a>
         </li>
       </ul>
-      <div class="space-y-4">
-        <p class="pt-8">Fecha de carga: {{ data.images[0].uploaded_at }}</p>
-        <button (click)="getNew()" class="py-2 px-48 border rounded-lg bg-red-200 text-gray-600 hover:bg-red-100">Refresh</button>
-
-   </div>
-  </div>
+    </div>
+    
+    <p class="text-4xl pb-4">ID de imagen: {{ response.images[0].image_id }}</p>
+    <div class="pb-4">
+      <p *ngIf="selectedTag" class="rounded-lg text-gray-700 bg-red-200 py-2 px-4 "  >{{ getTagName(selectedTag) }}</p>
+    </div>
+    <button class="bg-red-200 rounded-lg px-4 py-2 text-gray-800">
+      <a [href]="response.images[0].preview_url">Ver obra original</a>
+    </button>
+     <ul class="flex flex space-x-2 pt-8">
+          
+   
+      <li *ngFor="let tag of response.images[0].tags" class=" text-gray-800 rounded-lg bg-red-200 py-2 px-4">{{ tag.name }}</li>
+      </ul>
   
+    <div class="space-y-4">
+      <p class="pt-8">Fecha de carga: {{ response.images[0].uploaded_at }}</p>
+      <button (click)="refreshImage()" class="py-2 px-48 border rounded-lg bg-red-200 text-gray-600 hover:bg-red-100">Refresh</button>
+    </div>
+  </div>
 </body>

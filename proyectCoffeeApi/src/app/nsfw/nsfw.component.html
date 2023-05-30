@@ -1,0 +1,27 @@
+<body class="flex  bg-gray-700 w-full pr-16 space-x-32">
+  <div >
+    <img [src]="data?.images[0].url" alt="Imagen" class="h-256 w-full rounded-lg ">
+    </div>
+    
+   
+    <div class="justify-center pt-24 text-red-300 space-y-4">
+      <div >
+        <div class="space-x-4 " >
+          <button class="border rounded-lg text-red-300 border-red-300 py-2 px-6" (click)="getData('?included_tags=ass')">Ass</button>
+          <button class="border rounded-lg text-red-300 border-red-300 py-2 px-6" (click)="getData('?included_tags=hentai')">Hentai</button>
+          <button class="border rounded-lg text-red-300 border-red-300 py-2 px-6" (click)="getData('?included_tags=ero')">Ero</button>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div *ngIf="response">
+      <h2>{{ response.anonymous }}</h2>
+      <p>Twitter: <a href="{{ response.source }}" target="_blank">{{ response.source }}</a></p>
+      <img [src]="response.url" alt="Artwork">
+    </div>
+    
+    
+    
+</body>
+

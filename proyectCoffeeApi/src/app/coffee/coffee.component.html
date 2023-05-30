@@ -1,0 +1,24 @@
+<body class="flex   w-full  space-x-32">
+  <div >
+    <img [src]="data?.images[0].url" alt="Imagen" class="h-256 w-full border rounded-lg ">
+    </div>
+
+    <div class="justify-center pt-24 ">
+      <h1 class="text-5xl pb-4">Artista: {{ data?.images[0].artist['name'] }}</h1>
+      <p class="text-4xl pb-4">ID de imagen: {{ data.images[0].image_id }}</p>
+      <button class="bg-red-200 rounded-lg px-4 py-2 text-gray-800">
+        <a href="{{ data.images[0].preview_url }}">Ver obra original</a>
+      </button>
+      <ul class="flex flex space-x-2 pt-8">
+        <li *ngFor="let tag of data.images[0].tags" class="text-white border rounded-lg bg-black py-2 px-4">
+          {{ tag.name }}
+        </li>
+      </ul>
+      <div class="space-y-4">
+        <p class="pt-8">Fecha de carga: {{ data.images[0].uploaded_at }}</p>
+        <button (click)="getNew()" class="py-2 px-48 border rounded-lg bg-red-200 text-gray-600 hover:bg-red-100">Refresh</button>
+
+   </div>
+  </div>
+  
+</body>

@@ -1,0 +1,21 @@
+<nav [ngClass]="{
+  'bg-gray-700': isWhiteBackground,
+  'bg-gray-300': !isWhiteBackground,
+  'text-red-300': isWhiteBackground,
+  'text-white': !isWhiteBackground
+
+}" 
+ class="  font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between pt-6 pb-10 pl-12 pr-8  border-b border-red-300 shadow sm:items-baseline w-full justify-center">
+  <div class="mb-2 sm:mb-0 text-2xl">
+    <h1 class="uppercase">Waifular</h1>
+  </div>
+  <div class=" "> 
+    <a  routerLink="/home" routerLinkActive="active-link" class="nav-link text-xl no-underline text-grey-darkest hover:text-blue-dark ml-8">Home</a>
+    <a  routerLink="/waifu" routerLinkActive="active-link" class="nav-link text-xl no-underline text-grey-darkest hover:text-blue-dark ml-8">Explore</a>
+    <a  routerLink="/+18" routerLinkActive="active-link" class="nav-link text-xl no-underline text-grey-darkest hover:text-blue-dark ml-8">Non ANDARE</a>
+   
+  </div>
+
+  
+</nav>
+<router-outlet></router-outlet>

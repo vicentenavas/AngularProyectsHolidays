@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +21,30 @@ export class AppComponent {
   setGrayBackground() {
     this.isWhiteBackground = false;
   }
+  dataUser: any;
 
-// Función para controlar el menú desplegable
-// Función para controlar el menú desplegable
-// Función para controlar el menú desplegable
+  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+
+  ngOnInit(): void {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.dataUser = user;
+      } else {
+        this.dataUser = null;
+      }
+    });
+  }
+  logOut(): void {
+    this.afAuth.signOut()
+      .then(() => {
+        this.router.navigateByUrl('/Login');
+      
+      })
+      .catch(error => {
+        console.log(error);
+
+      });
+  }
 
 
 

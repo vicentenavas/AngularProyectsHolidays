@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { AppComponent } from '../app.component';
+
 @Component({
   selector: 'app-nsfw',
   templateUrl: './nsfw.component.html',
@@ -13,13 +15,29 @@ export class NsfwComponent {
   response: any
   data: any;
   
-constructor(private service: ApiService, private appComponent: AppComponent){}
+  constructor(private afAuth: AngularFireAuth, private router: Router, private service: ApiService) { }
 
 
-ngOnInit() {
 
-  this.toggleDropdown();
-}
+  ngOnInit() {
+    this.toggleDropdown();
+    this.checkAuthentication();
+
+ 
+  }
+
+  checkAuthentication() {
+    this.afAuth.authState.subscribe((user) => {
+      if (!user) {
+        // Usuario no autenticado, redirige al componente de inicio de sesión
+        this.router.navigate(['/login']);
+      } else {
+        // Acciones a realizar si el usuario está autenticado
+        // ...
+      }
+    });
+  }
+
 
 getTagName(tag: string): string {
   // Extraer el nombre del tag eliminando el prefijo y el signo de igual utilizando una expresión regular
@@ -79,4 +97,7 @@ toggleDropdown() {
 }
 
 
+
+
 }
+

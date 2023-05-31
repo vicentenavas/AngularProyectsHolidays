@@ -1,1 +1,37 @@
-<p>register works!</p>
+<section class="bg-red-200">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <h3 class="text-white font-semibold pb-12 text-xl">Register & enjoy the trambilenian experience! </h3>
+        <div class="w-full bg-gray-600 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-lg font-semibold leading-tight tracking-tight text-white md:text-2xl">
+                     Register your new account!
+                </h1>
+                <form class="space-y-4 md:space-y-6" action="#"  (ngSubmit)="register()" [formGroup]="registerUser" >
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-semibold text-white">Your name</label>
+                        <input type="text" name="name" id="name" class="bg-red-200 border border-gray-800 text-gray-200 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" formControlName="name" placeholder="Mario Bros" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-semibold text-white">Your email</label>
+                        <input type="email" name="email" id="email" class="bg-red-200 border border-gray-800 text-gray-200 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" formControlName="email"  placeholder="name@company.com" required>
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-semibold text-white">Password</label>
+                        <input type="password" name="password" id="password"  formControlName="password" placeholder="••••••••" class="bg-red-200 border border-gray-800 text-gray-200 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                          
+                            
+                        </div>
+                        
+                    </div>
+                    <button type="submit" class="w-full text-white bg-red-200 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                    <p class="text-sm font-light text-white">
+                        Have an account? <a href="/login" class="font-medium text-primary-600 hover:underline">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

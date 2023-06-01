@@ -37,7 +37,7 @@ export class AppComponent {
   logOut(): void {
     this.afAuth.signOut()
       .then(() => {
-        this.router.navigateByUrl('/Login');
+        this.router.navigateByUrl('/home');
       
       })
       .catch(error => {
